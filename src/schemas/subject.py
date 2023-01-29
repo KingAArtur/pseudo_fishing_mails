@@ -20,3 +20,9 @@ class SubjectCreateSchema(BaseModel):
     last_name: Optional[str] = None
     first_name: Optional[str] = None
     patronymic: Optional[str] = None
+
+
+class SubjectUpdateSchema(BaseModel):
+    last_name: Optional[str] = None
+    first_name: Optional[str] = None
+    patronymic: Optional[str] = None
