@@ -18,3 +18,8 @@ class LetterCreateSchema(BaseModel):
     subject_id: int
     content: str
     send_at: datetime
+
+
+class LetterUpdateSchema(BaseModel):
+    content: Optional[str] = None
+    send_at: Optional[datetime] = None
