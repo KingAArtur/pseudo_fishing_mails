@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import Optional
+from typing import Optional, List
 from datetime import datetime
 
 
@@ -16,6 +16,12 @@ class LetterSchema(BaseModel):
 
 class LetterCreateSchema(BaseModel):
     subject_id: int
+    content: str
+    send_at: datetime
+
+
+class LetterCreateMultipleSchema(BaseModel):
+    subjects_id: List[int]
     content: str
     send_at: datetime
 

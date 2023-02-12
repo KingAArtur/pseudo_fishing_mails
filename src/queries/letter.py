@@ -14,12 +14,19 @@ def create_letter(db: Session, letter_schema: LetterCreateSchema) -> LetterToSen
     return letter
 
 
-def create_letter_was_sent(db: Session, letter_schema: LetterCreateSchema) -> LetterWasSent:
-    letter = LetterWasSent(**letter_schema.dict())
-    db.add(letter)
-    db.commit()
-    db.refresh(letter)
-    return letter
+def move_letter_to_was_sent(db: Session, letter_id: int) -> LetterWasSent:
+    letter = get_letter_to_send_by_id(db, letter_id)
+    if letter:
+        db.delete(letter)
+        letter_was_sent = LetterWasSent(
+            subject_id=letter.subject_id,
+            content=letter.content,
+            send_at=letter.send_at
+        )
+        db.add(letter_was_sent)
+        db.commit()
+        db.refresh(letter_was_sent)
+        return letter_was_sent
 
 
 def update_letter(db: Session, letter_id: int, letter_schema: LetterUpdateSchema) -> Optional[LetterToSend]:
