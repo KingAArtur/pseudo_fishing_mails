@@ -1,12 +1,13 @@
 from fastapi import FastAPI
 import uvicorn
 
-from routers import subjects_router, schedule_router, history_router
+from routers import subjects_router, schedule_router, history_router, response_router
 
 app = FastAPI()
 app.include_router(subjects_router)
 app.include_router(schedule_router)
 app.include_router(history_router)
+app.include_router(response_router)
 
 
 @app.get('/')
