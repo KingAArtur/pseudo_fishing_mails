@@ -1,6 +1,7 @@
 from typing import List, Optional
 import sqlalchemy as sa
 from sqlalchemy.orm import Session, Query
+from datetime import datetime
 
 from models import LetterToSend, LetterWasSent
 from schemas import LetterCreateSchema, LetterUpdateSchema
@@ -53,6 +54,11 @@ def delete_letter(db: Session, letter_id: int) -> Optional[LetterToSend]:
 
 def get_all_letters_to_send(db: Session, limit: int, skip: int) -> List[LetterToSend]:
     query = Query(LetterToSend).limit(limit).offset(skip)
+    return db.execute(query).scalars().all()
+
+
+def get_all_letters_to_send_older_than(db: Session, older_than: datetime) -> List[LetterToSend]:
+    query = Query(LetterToSend).filter(LetterToSend.send_at < older_than)
     return db.execute(query).scalars().all()
 
 

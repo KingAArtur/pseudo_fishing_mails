@@ -22,7 +22,7 @@ class LetterCreateSchema(BaseModel):
 
 class LetterCreateMultipleSchema(BaseModel):
     subjects_id: List[int]
-    content: str
+    content: str = 'Привет, {last_name} {first_name} {patronymic}! Перейди по ссылке: {link}.'
     send_at: datetime
 
 
