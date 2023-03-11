@@ -1,17 +1,16 @@
 import sched
 import os
+from datetime import datetime
 
 import smtplib
 import ssl
 from email.message import EmailMessage
-
-from datetime import datetime
 from sqlalchemy.orm import Session
 
-from models import LetterWasSent, LetterToSend
-from queries import letter as letter_queries
-from queries import subject as subject_queries
-from schemas import LetterCreateSchema
+from src.models import LetterToSend
+from src.queries import letter as letter_queries
+from src.queries import subject as subject_queries
+from src.schemas import LetterCreateSchema
 from database import SessionLocal
 
 

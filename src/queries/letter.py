@@ -1,10 +1,10 @@
 from typing import List, Optional
-import sqlalchemy as sa
-from sqlalchemy.orm import Session, Query
 from datetime import datetime
 
-from models import LetterToSend, LetterWasSent
-from schemas import LetterCreateSchema, LetterUpdateSchema
+from sqlalchemy.orm import Session, Query
+
+from src.models import LetterToSend, LetterWasSent
+from src.schemas import LetterCreateSchema, LetterUpdateSchema
 
 
 def create_letter(db: Session, letter_schema: LetterCreateSchema) -> LetterToSend:

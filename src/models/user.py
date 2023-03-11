@@ -1,5 +1,6 @@
-import sqlalchemy as sa
 from datetime import datetime
+
+import sqlalchemy as sa
 
 from database import Base
 

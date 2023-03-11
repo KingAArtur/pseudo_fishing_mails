@@ -1,10 +1,11 @@
 from typing import List
+
 from fastapi import APIRouter, Depends
 
-from dependencies import get_db
-from schemas import ResponseSchema, ResponseCreateSchema
-from queries import response as response_queries
-from queries import letter as letter_queries
+from src.dependencies import get_db
+from src.schemas import ResponseSchema, ResponseCreateSchema
+from src.queries import response as response_queries
+from src.queries import letter as letter_queries
 
 
 trap_router = APIRouter(prefix='/trap', tags=['trap'])

@@ -1,9 +1,9 @@
 from typing import List, Optional
-import sqlalchemy as sa
+
 from sqlalchemy.orm import Session, Query
 
-from models import Response
-from schemas import ResponseCreateSchema
+from src.models import Response
+from src.schemas import ResponseCreateSchema
 
 
 def create_response(db: Session, response_schema: ResponseCreateSchema) -> Response:

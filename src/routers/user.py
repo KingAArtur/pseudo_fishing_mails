@@ -1,10 +1,11 @@
 from typing import List
+
 from fastapi import APIRouter, Depends, HTTPException, status
 
-from dependencies import get_db, get_current_user
-from schemas import UserCreateSchema, UserSchema, UserUpdateSchema
-from queries import user as user_queries
-from models import User
+from src.dependencies import get_db, get_current_user
+from src.schemas import UserCreateSchema, UserSchema, UserUpdateSchema
+from src.queries import user as user_queries
+from src.models import User
 
 
 users_router = APIRouter(prefix='/users', tags=['users'])

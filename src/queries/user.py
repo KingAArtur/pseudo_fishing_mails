@@ -1,11 +1,10 @@
 from typing import List, Optional
 
-import sqlalchemy as sa
 from sqlalchemy.orm import Session, Query
 
-from models import User
-from schemas import UserCreateSchema, UserUpdateSchema
-from auth_settings import pwd_context
+from src.models import User
+from src.schemas import UserCreateSchema, UserUpdateSchema
+from src.auth_settings import pwd_context
 
 
 def create_user(db: Session, user_schema: UserCreateSchema) -> User:

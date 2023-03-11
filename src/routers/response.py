@@ -1,9 +1,10 @@
 from typing import List
+
 from fastapi import APIRouter, Depends
 
-from dependencies import get_db
-from schemas import ResponseSchema, ResponseCreateSchema
-from queries import response as response_queries
+from src.dependencies import get_db
+from src.schemas import ResponseSchema, ResponseCreateSchema
+from src.queries import response as response_queries
 
 
 response_router = APIRouter(prefix='/response', tags=['response'])

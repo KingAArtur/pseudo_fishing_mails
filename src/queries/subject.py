@@ -1,9 +1,9 @@
 from typing import List, Optional
-import sqlalchemy as sa
+
 from sqlalchemy.orm import Session, Query
 
-from models import Subject
-from schemas import SubjectCreateSchema, SubjectUpdateSchema
+from src.models import Subject
+from src.schemas import SubjectCreateSchema, SubjectUpdateSchema
 
 
 def create_subject(db: Session, subject_schema: SubjectCreateSchema) -> Subject:

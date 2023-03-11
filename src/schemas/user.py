@@ -1,6 +1,7 @@
-from pydantic import BaseModel, constr, validator
 from typing import Optional
 from datetime import datetime
+
+from pydantic import BaseModel, constr, validator
 
 
 def check_passwords_match(password_repeat: str, values) -> str:

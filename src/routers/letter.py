@@ -1,9 +1,10 @@
 from typing import List
+
 from fastapi import APIRouter, Depends
 
-from dependencies import get_db
-from schemas import LetterCreateSchema, LetterCreateMultipleSchema, LetterSchema, LetterUpdateSchema
-from queries import letter as letter_queries
+from src.dependencies import get_db
+from src.schemas import LetterCreateSchema, LetterCreateMultipleSchema, LetterSchema, LetterUpdateSchema
+from src.queries import letter as letter_queries
 
 
 schedule_router = APIRouter(prefix='/schedule', tags=['schedule'])

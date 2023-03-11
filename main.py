@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 import uvicorn
 
-from routers import (subjects_router, schedule_router, history_router, response_router, trap_router,
-                     users_router, auth_router)
+from src.routers import (subjects_router, schedule_router, history_router, response_router, trap_router,
+                         users_router, auth_router)
 
 app = FastAPI()
 app.include_router(auth_router)
