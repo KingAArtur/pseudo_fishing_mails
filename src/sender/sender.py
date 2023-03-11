@@ -20,6 +20,10 @@ GMAIL_PASSWORD = os.environ.get('GMAIL_PASSWORD')
 if GMAIL_LOGIN is None or GMAIL_PASSWORD is None:
     raise ValueError('You must specify gmail login and password in GMAIL_LOGIN and GMAIL_PASSWORD variables!')
 
+APP_LINK = os.environ.get('APP_LINK')
+if APP_LINK is None:
+    raise ValueError('You must specify link to your app in APP_LINK variable!')
+
 SCHEDULE_INTERVAL = 10  # seconds
 MUST_HAVE_MESSAGE_HEADING = """I am testing automatic sending emails.
 If you see this then i just mistyped email address, dont worry.
@@ -48,7 +52,7 @@ def send_letter(db: Session, server: smtplib.SMTP_SSL, letter: LetterToSend):
     letter_was_sent = letter_queries.create_letter_was_sent(db, letter_was_sent_schema)
     letter_queries.delete_letter(db, letter.id)
 
-    txt.replace('{link}', f'http_link: {letter_was_sent.id}')
+    txt = txt.replace('{link}', f'{APP_LINK}/trap?letter_id={letter_was_sent.id}')
 
     msg = EmailMessage()
     msg.set_content(txt)
