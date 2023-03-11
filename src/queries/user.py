@@ -30,6 +30,14 @@ def update_user(db: Session, user_id: int, user_schema: UserUpdateSchema) -> Opt
         return user
 
 
+def delete_user(db: Session, user_id: int) -> Optional[User]:
+    user = get_user_by_id(db=db, user_id=user_id)
+    if user:
+        db.delete(user)
+        db.commit()
+        return user
+
+
 def get_all_users(db: Session, limit: int, skip: int) -> List[User]:
     query = Query(User).limit(limit).offset(skip)
     return db.execute(query).scalars().all()

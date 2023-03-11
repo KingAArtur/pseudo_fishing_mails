@@ -23,6 +23,12 @@ def update_user(user_id: int, user: UserUpdateSchema, db=Depends(get_db)):
     return UserSchema.from_orm(user)
 
 
+@users_router.delete('', response_model=UserSchema)
+def delete_user(user_id: int, db=Depends(get_db)):
+    user = user_queries.delete_user(db=db, user_id=user_id)
+    return UserSchema.from_orm(user)
+
+
 @users_router.get('', response_model=List[UserSchema])
 def read_users(db=Depends(get_db), id: int = None, limit: int = 100, skip: int = 0):
     if id is not None:
