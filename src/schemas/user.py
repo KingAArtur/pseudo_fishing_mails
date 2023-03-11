@@ -22,7 +22,14 @@ class UserSchema(BaseModel):
 
 class UserCreateSchema(BaseModel):
     username: str
-    password: str = constr(min_length=8)
+    password: constr(min_length=8)
+    password_repeat: str
+
+    _check_passwords_match = validator('password_repeat', allow_reuse=True)(check_passwords_match)
+
+
+class UserUpdateSchema(BaseModel):
+    password: constr(min_length=8)
     password_repeat: str
 
     _check_passwords_match = validator('password_repeat', allow_reuse=True)(check_passwords_match)
