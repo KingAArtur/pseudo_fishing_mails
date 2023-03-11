@@ -1,10 +1,11 @@
 from typing import List, Optional
+
 import sqlalchemy as sa
 from sqlalchemy.orm import Session, Query
 
 from models import User
 from schemas import UserCreateSchema, UserUpdateSchema
-from dependencies import pwd_context
+from auth_settings import pwd_context
 
 
 def create_user(db: Session, user_schema: UserCreateSchema) -> User:
@@ -37,5 +38,11 @@ def get_all_users(db: Session, limit: int, skip: int) -> List[User]:
 
 def get_user_by_id(db: Session, user_id: int) -> Optional[User]:
     query = Query(User).filter(User.id == user_id)
+    user = db.execute(query).scalars().first()
+    return user
+
+
+def get_user_by_username(db: Session, username: str) -> Optional[User]:
+    query = Query(User).filter(User.username == username)
     user = db.execute(query).scalars().first()
     return user
