@@ -52,7 +52,10 @@ def read_users(
 ):
     if id is not None:
         user = user_queries.get_user_by_id(db=db, user_id=id)
-        return [user]
+        if user:
+            return [user]
+        else:
+            return []
     else:
         users = user_queries.get_all_users(db=db, limit=limit, skip=skip)
         return users

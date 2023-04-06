@@ -43,10 +43,16 @@ def read_subjects(
     if id is not None:
         assert email is None
         subject = subject_queries.get_subject_by_id(db=db, subject_id=id)
-        return [subject]
+        if subject:
+            return [subject]
+        else:
+            return []
     elif email is not None:
         subject = subject_queries.get_subject_by_email(db=db, subject_email=email)
-        return [subject]
+        if subject:
+            return [subject]
+        else:
+            return []
     else:
         subjects = subject_queries.get_all_subjects(db=db, limit=limit, skip=skip)
         return subjects

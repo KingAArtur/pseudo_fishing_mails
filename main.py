@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
 from src.routers import (subjects_router, schedule_router, history_router, response_router, trap_router,
@@ -12,6 +13,15 @@ app.include_router(schedule_router)
 app.include_router(history_router)
 app.include_router(response_router)
 app.include_router(trap_router)
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[str(origin) for origin in ["http://localhost:3000", "http://localhost:8000"]],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get('/')
