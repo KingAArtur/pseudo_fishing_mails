@@ -70,8 +70,8 @@ const SubjectsDashboard = () => {
         client
             .createSubject(
                 subjectCreateForm.email,
-                subjectCreateForm.first_name,
                 subjectCreateForm.last_name,
+                subjectCreateForm.first_name,
                 subjectCreateForm.patronymic,
             )
             // eslint-disable-next-line no-unused-vars
@@ -126,7 +126,7 @@ const SubjectsDashboard = () => {
 				<div className="container px-5 pt-6 text-center mx-auto lg:px-20">
 						{/*TODO - move to component*/}
 					<h1 className="mb-12 text-3xl font-medium text-white">
-						Пользователи
+						Испытуемые
 					</h1>
 
 					<button
