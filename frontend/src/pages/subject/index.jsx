@@ -43,9 +43,6 @@ const SubjectsDashboard = () => {
 		last_name: "",
 		patronymic: "",
 	});
-	const [subjectDeleteForm, setSubjectDeleteForm] = useState({
-		subject_id: "",
-	});
 	const [subjectReadForm, setSubjectReadForm] = useState({
 		subject_id: "",
 		email: "",
@@ -53,7 +50,6 @@ const SubjectsDashboard = () => {
 
 	const [showCreateForm, setShowCreateForm] = useState(false);
 	const [showUpdateForm, setShowUpdateForm] = useState(false);
-	const [showDeleteForm, setShowDeleteForm] = useState(false);
 	const [showReadForm, setShowReadForm] = useState(false);
 	const [subjects, setSubjects] = useState([]);
 
@@ -99,24 +95,6 @@ const SubjectsDashboard = () => {
             .then((data) => {  // eslint:ignore
                 fetchSubjects();
                 setShowUpdateForm(false);
-            });
-	};
-
-	const onDeleteSubject = (e) => {
-		e.preventDefault();
-
-		if (subjectDeleteForm.subject_id.length <= 0) {
-			return setError({ subject_id: "Введите id пользователя" });
-		}
-
-        client
-            .deleteSubject(
-                subjectDeleteForm.subject_id,
-            )
-            // eslint-disable-next-line no-unused-vars
-            .then((data) => {  // eslint:ignore
-                fetchSubjects();
-                setShowDeleteForm(false);
             });
 	};
 
@@ -167,15 +145,6 @@ const SubjectsDashboard = () => {
 						}}
 					>
 						Изменить
-					</button>
-
-					<button
-						className="my-5 text-white bg-teal-500 p-3 rounded"
-						onClick={() => {
-							setShowDeleteForm(!showDeleteForm);
-						}}
-					>
-						Удалить
 					</button>
 
 					<button
@@ -318,34 +287,6 @@ const SubjectsDashboard = () => {
 				</PopupModal>
 			)}
 
-			{showDeleteForm && (
-				<PopupModal
-					modalTitle={"Удаление испытуемого"}
-					onCloseBtnPress={() => {
-						setShowDeleteForm(false);
-						setError({ subject_id: "" });
-					}}
-				>
-					<div className="mt-4 text-left">
-						<form className="mt-5" onSubmit={(e) => onDeleteSubject(e)}>
-							<FormInput
-								type={"text"}
-								name={"subject_id"}
-								label={"Номер испытуемого"}
-								error={error.subject_id}
-								value={subjectDeleteForm.subject_id}
-								onChange={(e) =>
-									setSubjectDeleteForm({ ...subjectDeleteForm, subject_id: e.target.value })
-								}
-							/>
-							<Button
-								error={error.source}
-								title={"Удалить!"}
-							/>
-						</form>
-					</div>
-				</PopupModal>
-			)}
 			{showReadForm && (
 				<PopupModal
 					modalTitle={"Просмотр испытуемых"}
