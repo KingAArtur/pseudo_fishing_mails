@@ -20,7 +20,7 @@ const Home = () => {
 
                          <div className="flex flex-col flex-wrap pb-6 mb-12 text-white ">
                               <h1 className="mb-6 text-3xl font-medium text-white">
-                                   what
+                                   This is Home page!
                               </h1>
                          </div>
                     </div>

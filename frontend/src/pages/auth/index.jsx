@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import DashboardHeader from "../../components/DashboardHeader";
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import FastAPIClient from '../../client';
 import config from '../../config';
 import Button from '../../components/Button/Button';
@@ -9,8 +9,8 @@ import FormInput from '../../components/FormInput/FormInput';
 const client = new FastAPIClient(config);
 
 const Auth = () => {
-  const [error, setError] = useState({email: "", password: ""});
-  const [loginForm, setLoginForm] = useState({ email: '', password: '' });
+  const [error, setError] = useState({username: "", password: ""});
+  const [loginForm, setLoginForm] = useState({ username: '', password: '' });
 
   const [loading, setLoading] = useState(false)
 
@@ -21,10 +21,10 @@ const Auth = () => {
     setError(false);
     setLoading(true)
 
-    if(loginForm.email.length <= 0)
+    if(loginForm.username.length <= 0)
     {
       setLoading(false)
-      return setError({email: "Please Enter Email Address"}) 
+      return setError({username: "Please Enter Username"})
     }
     if(loginForm.password.length <= 0)
     {
@@ -32,7 +32,7 @@ const Auth = () => {
       return setError({password: "Please Enter Password"})
     }
 
-    client.login(loginForm.email, loginForm.password)
+    client.login(loginForm.username, loginForm.password)
       .then( () => {
         navigate('/')
       })
@@ -61,16 +61,16 @@ const Auth = () => {
               <form onSubmit={(e) => onLogin(e)}>
                 <FormInput 
                   type={"text"}
-                  name={"email"}
-                  label={"Email"}
-                  error={error.email}
-                  value={loginForm.email}
-                  onChange={(e) => setLoginForm({...loginForm, email: e.target.value })}
+                  name={"username"}
+                  label={"Имя пользователя"}
+                  error={error.username}
+                  value={loginForm.username}
+                  onChange={(e) => setLoginForm({...loginForm, username: e.target.value })}
                 />
                 <FormInput 
                   type={"password"}
                   name={"password"}
-                  label={"Password"}
+                  label={"Пароль"}
                   error={error.password}
                   value={loginForm.password} 
                   onChange={(e) => setLoginForm({...loginForm, password: e.target.value })}
@@ -81,9 +81,6 @@ const Auth = () => {
                   error={error.password}
                   />      
               </form>
-              <footer>
-                <Link className="text-teal-700 hover:text-blue-900 text-sm float-right" to="/sign-up">Create Account</Link>
-              </footer> 
             </div>
           </div>
       </section>
