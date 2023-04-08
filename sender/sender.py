@@ -84,6 +84,8 @@ def work(scheduler):
     scheduler.enter(SCHEDULE_INTERVAL, 0, work, argument=(scheduler,))
 
 
-mail_scheduler = sched.scheduler()
-mail_scheduler.enter(0, 0, work, argument=(mail_scheduler,))
-mail_scheduler.run()
+if __name__ == '__main__':
+    print(f'Scheduler started and will check for letters every {SCHEDULE_INTERVAL} seconds')
+    mail_scheduler = sched.scheduler()
+    mail_scheduler.enter(0, 0, work, argument=(mail_scheduler,))
+    mail_scheduler.run()
