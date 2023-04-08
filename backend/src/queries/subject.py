@@ -2,8 +2,8 @@ from typing import List, Optional
 
 from sqlalchemy.orm import Session, Query
 
-from src.models import Subject
-from src.schemas import SubjectCreateSchema, SubjectUpdateSchema
+from backend.src.models import Subject
+from backend.src.schemas import SubjectCreateSchema, SubjectUpdateSchema
 
 
 def create_subject(db: Session, subject_schema: SubjectCreateSchema) -> Subject:

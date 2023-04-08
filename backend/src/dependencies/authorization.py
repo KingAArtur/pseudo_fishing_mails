@@ -3,8 +3,8 @@ from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt  # noqa
 
 from .db import get_db
-from src.queries import user as user_queries
-from src.auth_settings import SECRET_KEY, ALGORITHM
+from backend.src.queries import user as user_queries
+from backend.src.auth_settings import SECRET_KEY, ALGORITHM
 
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth")

@@ -7,10 +7,9 @@ import ssl
 from email.message import EmailMessage
 from sqlalchemy.orm import Session
 
-from src.models import LetterToSend
-from src.queries import letter as letter_queries
-from src.queries import subject as subject_queries
-from src.schemas import LetterCreateSchema
+from backend.src.models import LetterToSend
+from backend.src.queries import letter as letter_queries, subject as subject_queries
+from backend.src.schemas import LetterCreateSchema
 from database import SessionLocal
 
 

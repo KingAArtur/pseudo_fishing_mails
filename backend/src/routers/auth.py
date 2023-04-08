@@ -7,8 +7,8 @@ from jose import JWTError, jwt  # noqa
 from pydantic import BaseModel
 
 from database import SessionLocal
-from src.queries import user as user_queries
-from src.auth_settings import SECRET_KEY, ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES, pwd_context
+from backend.src.queries import user as user_queries
+from backend.src.auth_settings import SECRET_KEY, ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES, pwd_context
 
 
 class Token(BaseModel):

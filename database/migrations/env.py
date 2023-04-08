@@ -6,7 +6,7 @@ from sqlalchemy import pool
 from alembic import context
 
 from database import Base
-from src.models import *
+from backend.src.models import *  # noqa
 
 
 # this is the Alembic Config object, which provides

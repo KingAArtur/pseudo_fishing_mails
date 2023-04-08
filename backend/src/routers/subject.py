@@ -2,9 +2,9 @@ from typing import List
 
 from fastapi import APIRouter, Depends
 
-from src.dependencies import get_db, get_current_user
-from src.schemas import SubjectCreateSchema, SubjectSchema, SubjectUpdateSchema
-from src.queries import subject as subject_queries
+from backend.src.dependencies import get_db, get_current_user
+from backend.src.schemas import SubjectCreateSchema, SubjectSchema, SubjectUpdateSchema
+from backend.src.queries import subject as subject_queries
 
 
 subjects_router = APIRouter(prefix='/subjects', tags=['subjects'])

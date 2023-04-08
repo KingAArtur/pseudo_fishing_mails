@@ -2,9 +2,9 @@ from typing import List, Optional
 
 from sqlalchemy.orm import Session, Query
 
-from src.models import User
-from src.schemas import UserCreateSchema, UserUpdateSchema
-from src.auth_settings import pwd_context
+from backend.src.models import User
+from backend.src.schemas import UserCreateSchema, UserUpdateSchema
+from backend.src.auth_settings import pwd_context
 
 
 def create_user(db: Session, user_schema: UserCreateSchema) -> User:

@@ -2,8 +2,8 @@ from typing import List, Optional
 
 from sqlalchemy.orm import Session, Query
 
-from src.models import Response
-from src.schemas import ResponseCreateSchema
+from backend.src.models import Response
+from backend.src.schemas import ResponseCreateSchema
 
 
 def create_response(db: Session, response_schema: ResponseCreateSchema) -> Response:

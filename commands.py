@@ -2,9 +2,9 @@ import click
 
 from database import Base, SessionLocal
 # необходимо для того, чтобы при удалении/инициализации бд было видно все таблицы
-from src.models import *  # noqa
-from src.queries import user as user_queries
-from src.schemas import UserCreateSchema
+from backend.src.models import *  # noqa
+from backend.src.queries import user as user_queries
+from backend.src.schemas import UserCreateSchema
 
 
 @click.group()

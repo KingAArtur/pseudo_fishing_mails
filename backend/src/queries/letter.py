@@ -3,8 +3,8 @@ from datetime import datetime
 
 from sqlalchemy.orm import Session, Query
 
-from src.models import LetterToSend, LetterWasSent
-from src.schemas import LetterCreateSchema, LetterUpdateSchema
+from backend.src.models import LetterToSend, LetterWasSent
+from backend.src.schemas import LetterCreateSchema, LetterUpdateSchema
 
 
 def create_letter(db: Session, letter_schema: LetterCreateSchema) -> LetterToSend:
