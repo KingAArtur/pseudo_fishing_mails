@@ -31,14 +31,17 @@ const ProfileView = ({ schedules }) => {
 const SchedulesDashboard = () => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [error, setError] = useState({ label: "", url: "", source: "" });
+
+	const date = new Date();
+	const date_str = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}`;
 	const [scheduleCreateForm, setScheduleCreateForm] = useState({
 		subjects_id: "",
-		send_at: "2023-04-07T17:23:38.867Z",
+		send_at: date_str,
 		content: "Hello, {last_name} {first_name} {patronymic}! Go to link: {link}",
 	});
 	const [scheduleUpdateForm, setScheduleUpdateForm] = useState({
 		letter_id: "",
-		send_at: "2023-04-07T17:23:38.867Z",
+		send_at: date_str,
 		content: "Hello, {last_name} {first_name} {patronymic}! Go to link: {link}",
 	});
 	const [scheduleDeleteForm, setScheduleDeleteForm] = useState({
@@ -229,7 +232,7 @@ const SchedulesDashboard = () => {
 							<FormInput
 								type={"text"}
 								name={"send_at"}
-								label={"Дата отправки"}
+								label={"Дата отправки в формате 'YYYY-MM-DD HH:MM' (UTC)"}
 								error={error.send_at}
 								value={scheduleCreateForm.send_at}
 								onChange={(e) =>
