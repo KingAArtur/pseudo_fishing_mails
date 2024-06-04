@@ -26,7 +26,7 @@
 - Для обращения к базе данных используется библиотека `sqlalchemy`.
 
 
-- Для **фронтенда** использован `React` ([Create React App](https://github.com/facebook/create-react-app)).
+- Для **фронтенда** использован `React` ([Create React App](https://github.com/facebook/create-react-app)). [*Я не знаток `React`'а, просто воспользовался готовым решением для фронтенда*]
 
 
 - **Отправщик** сообщений электронной почты написан на `Python3`,
